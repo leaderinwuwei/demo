@@ -1,7 +1,6 @@
 package com.captain.demo.mvc.controller;
 
 import com.captain.demo.utils.Result;
-import com.sun.net.httpserver.Authenticator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +11,7 @@ import static java.lang.System.out;
 
 /**
  * 重复提交导致多个相同数据
+ *
  * @author Captain Wang
  * @time2020/4/15
  */
@@ -22,6 +22,7 @@ public class RepeatCommitController {
      * servlet共享此全局变量
      */
     public List<Integer> list = new ArrayList<>();
+
     @GetMapping("/repeatCommit")
     public Result<List<Integer>> repeatCommit(Integer code) throws InterruptedException {
         out.println("servlet start");
@@ -30,7 +31,7 @@ public class RepeatCommitController {
         //模拟数据库内存占满，没有及时处理
         Thread.sleep(1000L);
         for (Integer integer : list) {
-            out.print(integer+ "\n");
+            out.print(integer + "\n");
         }
         result.setData(list);
         out.println("servlet end");

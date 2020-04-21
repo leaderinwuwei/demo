@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloSpringBoot {
     @GetMapping("sayHello")
-    public String sayHello(){
+    public String sayHello() {
         return "hello Spring-Boot";
     }
 }
