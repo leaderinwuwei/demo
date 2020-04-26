@@ -4,19 +4,26 @@
  */
 package com.captain.demo.generator;
 
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
+import com.baomidou.mybatisplus.generator.config.rules.IColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-
 /**
- * @author captainwang
- */
+ * @ClassName: AutoGenerateCode
+ * @Description:
+ * @Author: Monta
+ * @Date: 2019/11/11 下午4:08
+ **/
 @Component
 public class AutoGenerateCode {
 
@@ -27,10 +34,10 @@ public class AutoGenerateCode {
          * 根路径，我这里先直接放到此项目中。可以根据自己需要修改制定
          */
         String basePath = System.getProperty("user.dir");
-        String parentPackageName = "com.captain";
-        String moduleName = "demo.mvc";
-        String[] tableNames = new String[]{"m_brand_out_depot"};
-        String[] tablePres = new String[]{"m_"};
+        String parentPackageName = "com.captain.demo";
+        String moduleName = "mvc";
+        String[] tableNames = new String[]{"d_user"};
+        String[] tablePres = new String[]{"d_"};
         String jdbcHost = "127.0.0.1";
         String jdbcPort = "3306";
         String jdbcDatabase = "demo";
@@ -39,8 +46,8 @@ public class AutoGenerateCode {
         System.out.println(jdbcUrl);
         AutoDataSourceConfig autoDataSourceConfig = AutoDataSourceConfig.builder()
                 .jdbcDriverClassName("com.mysql.jdbc.Driver")
-                .jdbcPassword("139566")
-                .jdbcUserName("root@localhost")
+                .jdbcPassword("root@localHost")
+                .jdbcUserName("139566")
                 .jdbcUrl(jdbcUrl)
                 .build();
         String outputDir = String.format("%s/src/main/java", basePath);
@@ -67,7 +74,6 @@ public class AutoGenerateCode {
                     .setDataSource(initDataSource(dataSourceConfig))
                     .setStrategy(initStrategyConfig(tablePres, tableNames))
                     .setPackageInfo(initPackage(parentPackageName, moduleName))
-                    .setTemplate(initTemplateConfig())
                     .execute();
             logger.error(">>>>>>> Generate Code Completed... >>>>>>>");
         } catch (Exception e) {
@@ -85,25 +91,22 @@ public class AutoGenerateCode {
     private GlobalConfig initGlobConfig(String outputDir) {
         return new GlobalConfig()
                 .setOutputDir(outputDir)
-                /**
-                 * 方法都比较见名知意了，就不做赘述
-                 */
                 .setFileOverride(false)
                 .setOpen(false)
                 .setEnableCache(false)
                 .setKotlin(false)
+                .setSwagger2(true)
+                .setDateType(DateType.ONLY_DATE)
                 .setActiveRecord(false)
                 .setBaseResultMap(true)
                 .setBaseColumnList(true)
-                /**
-                 * 以下个人系统的类后缀，可根据自己需要调整
-                 */
                 .setMapperName("%sMapper")
                 .setXmlName("%sMapper")
                 .setServiceName("I%sService")
                 .setServiceImplName("%sServiceImpl")
                 .setControllerName("%sController")
-                .setAuthor("captain wang");
+                .setAuthor("captain")
+                .setIdType(IdType.ID_WORKER);
     }
 
     /**
@@ -114,7 +117,18 @@ public class AutoGenerateCode {
      */
     private DataSourceConfig initDataSource(AutoDataSourceConfig dataSourceConfig) {
         return new DataSourceConfig()
+                .setDbType(DbType.MYSQL)
                 .setTypeConvert(new MySqlTypeConvert() {
+                    /**
+                     * 自定义部分数据库类型对应转换的Java类型，根据个人需要设定
+                     */
+                    @Override
+                    public IColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType) {
+                        if (fieldType.toLowerCase().contains("tinyint")) {
+                            return DbColumnType.BOOLEAN;
+                        }
+                        return super.processTypeConvert(globalConfig, fieldType);
+                    }
                 })
                 .setDriverName(dataSourceConfig.getJdbcDriverClassName())
                 .setUrl(dataSourceConfig.getJdbcUrl())
@@ -135,6 +149,7 @@ public class AutoGenerateCode {
                 .setColumnNaming(NamingStrategy.underline_to_camel)
                 .setTablePrefix(tablePre)
                 .setControllerMappingHyphenStyle(true)
+                .setEntityTableFieldAnnotationEnable(true)
                 .setEntityLombokModel(true)
                 .setInclude(tableNames)
                 .setRestControllerStyle(false);
@@ -163,12 +178,5 @@ public class AutoGenerateCode {
         return packageConfig;
     }
 
-    /**
-     * 指定生成代码模板文件路径【可以不指定，使用mp默认的】
-     *
-     * @return TemplateConfig
-     */
-    private TemplateConfig initTemplateConfig() {
-        return new TemplateConfig();
-    }
+
 }
