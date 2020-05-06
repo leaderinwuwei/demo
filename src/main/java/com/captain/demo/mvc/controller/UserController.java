@@ -1,15 +1,12 @@
 package com.captain.demo.mvc.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.captain.demo.mvc.entity.User;
-import com.captain.demo.mvc.mapper.UserMapper;
 import com.captain.demo.mvc.service.IUserService;
 import com.captain.demo.utils.Result;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -31,8 +28,8 @@ public class UserController {
 
     @GetMapping("/list")
     @ResponseBody
-    public Result list(){
-        Result result = new Result<>();
+    public Result<List<User>> list() {
+        Result<List<User>> result = new Result<>();
         result.setData(userService.list());
         return result;
     }
