@@ -1,4 +1,4 @@
-package com.captain.demo.mvc.mapper;
+package com.captain.demo.mvc.dao;
 
 import com.captain.demo.mvc.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
