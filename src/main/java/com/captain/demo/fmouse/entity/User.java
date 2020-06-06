@@ -1,15 +1,11 @@
-package com.captain.demo.mvc.entity;
+package com.captain.demo.fmouse.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-
 import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
-
 import java.io.Serializable;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,16 +18,17 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author captain
- * @since 2020-04-25
+ * @since 2020-05-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("d_user")
-@ApiModel(value = "User对象", description = "demo项目用户表")
+@ApiModel(value="User对象", description="demo项目用户表")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID=1L;
+
     @ApiModelProperty(value = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

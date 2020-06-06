@@ -1,6 +1,6 @@
-package com.captain.demo.mvc.service;
+package com.captain.demo.fmouse.service;
 
-import com.captain.demo.mvc.entity.User;
+import com.captain.demo.fmouse.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author captain
- * @since 2020-04-25
+ * @since 2020-05-21
  */
 public interface IUserService extends IService<User> {
 

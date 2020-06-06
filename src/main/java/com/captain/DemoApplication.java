@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @time2020/4/15
  */
 @Slf4j
-@SpringBootApplication
-@MapperScan("com.captain.demo.mvc.dao")
+@SpringBootApplication  // same as @Configuration @EnableAutoConfiguration @ComponentScan
+@MapperScan("com.captain.demo.fmouse.mapper")
 public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);

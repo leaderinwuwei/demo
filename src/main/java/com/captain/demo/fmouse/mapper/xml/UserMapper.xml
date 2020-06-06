@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.captain.demo.mvc.dao.UserMapper">
+<mapper namespace="com.captain.demo.fmouse.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.captain.demo.mvc.entity.User">
+    <resultMap id="BaseResultMap" type="com.captain.demo.fmouse.entity.User">
         <id column="id" property="id" />
         <result column="headimgurl" property="headimgurl" />
         <result column="nickname" property="nickname" />
@@ -28,9 +28,5 @@
     <sql id="Base_Column_List">
         id, headimgurl, nickname, role_id, phone, openid, wx_openid, sex, unionid, country, province, city, type, status, create_time, update_time, create_by, update_by
     </sql>
-
-    <select id="getLimitOne" resultType="com.captain.demo.mvc.entity.User">
-        select * from d_user limit 1
-    </select>
 
 </mapper>
