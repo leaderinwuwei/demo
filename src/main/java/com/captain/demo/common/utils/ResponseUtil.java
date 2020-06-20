@@ -2,12 +2,12 @@
  * pxys
  * Copyright (C) 2017-2019 All Rights Reserved.
  */
-package com.captain.demo.utils;/**
+package com.captain.demo.common.utils;/**
  * Created by pigun on 2019/8/26.
  */
 
 import com.alibaba.fastjson.JSON;
-import com.captain.demo.enums.EnumResultCode;
+import com.captain.demo.common.enums.EnumResultCode;
 import org.apache.http.entity.ContentType;
 
 import javax.servlet.http.HttpServletResponse;

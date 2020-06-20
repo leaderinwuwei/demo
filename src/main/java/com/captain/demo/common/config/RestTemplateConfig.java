@@ -1,4 +1,4 @@
-package com.captain.demo.config;
+package com.captain.demo.common.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HeaderElement;

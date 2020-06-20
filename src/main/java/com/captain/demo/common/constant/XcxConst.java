@@ -2,7 +2,7 @@
  * pxys
  * Copyright (C) 2017-2019 All Rights Reserved.
  */
-package com.captain.demo.constant;/**
+package com.captain.demo.common.constant;/**
  * Created by pigun on 2019/8/26.
  */
 

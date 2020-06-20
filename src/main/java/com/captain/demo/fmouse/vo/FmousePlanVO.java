@@ -1,4 +1,4 @@
-package com.captain.demo.fmouse;
+package com.captain.demo.fmouse.vo;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
-package com.captain.demo.mongo.impl;
+package com.captain.demo.database.mongo.impl;
 
-import com.captain.demo.mongo.UserRepository;
-import com.captain.demo.mongo.model.User;
+import com.captain.demo.database.mongo.UserRepository;
+import com.captain.demo.database.mongo.model.User;
 import com.mongodb.client.result.UpdateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

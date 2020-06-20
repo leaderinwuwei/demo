@@ -1,7 +1,7 @@
 package com.captain.demo.fmouse.service.impl;
 
-import com.captain.demo.fmouse.entity.FmousePlan;
-import com.captain.demo.fmouse.mapper.FmousePlanMapper;
+import com.captain.demo.database.mybatis.entity.FmousePlan;
+import com.captain.demo.database.mybatis.FmousePlanMapper;
 import com.captain.demo.fmouse.service.IFmousePlanService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

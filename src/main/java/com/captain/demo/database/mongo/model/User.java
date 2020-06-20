@@ -1,4 +1,4 @@
-package com.captain.demo.mongo.model;
+package com.captain.demo.database.mongo.model;
 
 import java.io.Serializable;
 

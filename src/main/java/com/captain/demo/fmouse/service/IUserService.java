@@ -1,6 +1,6 @@
 package com.captain.demo.fmouse.service;
 
-import com.captain.demo.fmouse.entity.User;
+import com.captain.demo.database.mybatis.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

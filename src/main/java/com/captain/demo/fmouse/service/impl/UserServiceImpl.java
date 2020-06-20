@@ -1,7 +1,7 @@
 package com.captain.demo.fmouse.service.impl;
 
-import com.captain.demo.fmouse.entity.User;
-import com.captain.demo.fmouse.mapper.UserMapper;
+import com.captain.demo.database.mybatis.entity.User;
+import com.captain.demo.database.mybatis.UserMapper;
 import com.captain.demo.fmouse.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

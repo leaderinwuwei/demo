@@ -1,4 +1,4 @@
-package com.captain.demo.fmouse.entity;
+package com.captain.demo.database.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * demo项目飞鼠计划表
+ * demo项目用户表
  * </p>
  *
  * @author captain
@@ -23,9 +23,9 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("d_fmouse_plan")
-@ApiModel(value="FmousePlan对象", description="demo项目飞鼠计划表")
-public class FmousePlan implements Serializable {
+@TableName("d_user")
+@ApiModel(value="User对象", description="demo项目用户表")
+public class User implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -33,29 +33,53 @@ public class FmousePlan implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "头像")
+    @TableField("headimgurl")
+    private String headimgurl;
+
+    @ApiModelProperty(value = "昵称")
+    @TableField("nickname")
+    private String nickname;
+
+    @ApiModelProperty(value = "角色id")
+    @TableField("role_id")
+    private Integer roleId;
+
+    @ApiModelProperty(value = "手机号码")
+    @TableField("phone")
+    private String phone;
+
     @ApiModelProperty(value = "小程序openid")
     @TableField("openid")
     private String openid;
 
-    @ApiModelProperty(value = "计划名称")
-    @TableField("plan_name")
-    private String planName;
+    @ApiModelProperty(value = "公众号openid")
+    @TableField("wx_openid")
+    private String wxOpenid;
 
-    @ApiModelProperty(value = "开始时间")
-    @TableField("start_time")
-    private Date startTime;
+    @ApiModelProperty(value = "性别")
+    @TableField("sex")
+    private String sex;
 
-    @ApiModelProperty(value = "结束时间")
-    @TableField("end_time")
-    private Date endTime;
+    @ApiModelProperty(value = "微信unionid")
+    @TableField("unionid")
+    private String unionid;
 
-    @ApiModelProperty(value = "身份")
-    @TableField("identity")
-    private String identity;
+    @ApiModelProperty(value = "国家")
+    @TableField("country")
+    private String country;
 
-    @ApiModelProperty(value = "预估完成的小时数")
-    @TableField("hours")
-    private Integer hours;
+    @ApiModelProperty(value = "省")
+    @TableField("province")
+    private String province;
+
+    @ApiModelProperty(value = "市")
+    @TableField("city")
+    private String city;
+
+    @ApiModelProperty(value = "用户类型 1 正常用户  2 测试白名单  3   灰名单   4  黑名单   ")
+    @TableField("type")
+    private Integer type;
 
     @ApiModelProperty(value = "1：有效、0：删除")
     @TableField("status")
@@ -76,7 +100,6 @@ public class FmousePlan implements Serializable {
     @ApiModelProperty(value = "修改人id")
     @TableField("update_by")
     private String updateBy;
-
 
 
 }

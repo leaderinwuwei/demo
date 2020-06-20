@@ -2,7 +2,7 @@
  * pxys
  * Copyright (C) 2017-2019 All Rights Reserved.
  */
-package com.captain.demo.generator;
+package com.captain.demo.common.generator;
 
 
 import lombok.Builder;

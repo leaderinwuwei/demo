@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication  // same as @Configuration @EnableAutoConfiguration @ComponentScan
-@MapperScan("com.captain.demo.fmouse.mapper")
+@MapperScan("com.captain.demo.database.mapper")
 public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);

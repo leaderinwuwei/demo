@@ -1,4 +1,4 @@
-package com.captain.demo.enums;
+package com.captain.demo.common.enums;
 
 /**
  * Created by pigun on 2019/8/26.

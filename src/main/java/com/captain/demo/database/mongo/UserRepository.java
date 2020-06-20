@@ -1,7 +1,7 @@
-package com.captain.demo.mongo;
+package com.captain.demo.database.mongo;
 
 
-import com.captain.demo.mongo.model.User;
+import com.captain.demo.database.mongo.model.User;
 
 /**
  * Created by summer on 2017/5/5.

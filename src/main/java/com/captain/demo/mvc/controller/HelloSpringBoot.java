@@ -1,6 +1,6 @@
 package com.captain.demo.mvc.controller;
 
-import com.captain.demo.mongo.UserRepository;
+import com.captain.demo.database.mongo.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

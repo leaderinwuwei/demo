@@ -1,6 +1,6 @@
 package com.captain.demo.mvc.controller;
 
-import com.captain.demo.utils.Result;
+import com.captain.demo.common.utils.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;

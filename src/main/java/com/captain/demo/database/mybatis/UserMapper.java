@@ -1,6 +1,6 @@
-package com.captain.demo.fmouse.mapper;
+package com.captain.demo.database.mybatis;
 
-import com.captain.demo.fmouse.entity.User;
+import com.captain.demo.database.mybatis.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

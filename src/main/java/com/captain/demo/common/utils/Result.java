@@ -1,4 +1,4 @@
-package com.captain.demo.utils;
+package com.captain.demo.common.utils;
 
 import java.io.Serializable;
 
