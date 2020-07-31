@@ -1,8 +1,11 @@
 package com.captain.demo.fmouse.controller;
 
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.captain.demo.common.enums.EnumResultCode;
+import com.captain.demo.common.utils.SpringContextUtil;
 import com.captain.demo.fmouse.vo.FmousePlanVO;
 import com.captain.demo.database.mybatis.entity.FmousePlan;
 import com.captain.demo.database.mybatis.entity.User;
@@ -11,16 +14,18 @@ import com.captain.demo.fmouse.service.IUserService;
 import com.captain.demo.common.utils.ResponseUtil;
 import com.captain.demo.common.utils.Result;
 import com.github.binarywang.java.emoji.EmojiConverter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -33,6 +38,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/fmouse/fmouse-plan")
+@Slf4j
 public class FmousePlanController {
 
     @Resource
@@ -84,6 +90,22 @@ public class FmousePlanController {
             return fmousePlanVO;
         }).collect(Collectors.toList());
         return ResponseUtil.builderResponse(EnumResultCode.SUCCESS,fmousePlanVOS);
+    }
+
+    @GetMapping("/listAll")
+    public Result listAll(int a) throws NoSuchFieldException, IllegalAccessException {
+        List<FmousePlan> fmousePlans = fmousePlanService.list(new QueryWrapper<FmousePlan>().eq(Boolean.TRUE,"openid","afdsa"));
+        List<Map<String, Object>> maplist = fmousePlanService.listMaps();
+        return ResponseUtil.builderResponse(EnumResultCode.SUCCESS,fmousePlans);
+    }
+
+    @GetMapping("/test")
+    public Result test(String aaa) {
+        log.info("aaa,{}",aaa);
+        User user1 = userService.getOne(new LambdaQueryWrapper<User>().eq(User::getWxOpenid,aaa).last("limit 1"));
+        User user2 = userService.getOne(new QueryWrapper<User>().eq("wx_openid",aaa).last("limit 1"));
+        System.out.println("s");
+        return null;
     }
 
 }

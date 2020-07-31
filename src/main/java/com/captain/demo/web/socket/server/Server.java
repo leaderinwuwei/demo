@@ -1,4 +1,4 @@
-package com.captain.demo.socket.server;
+package com.captain.demo.web.socket.server;
 
 
 import java.io.BufferedReader;
