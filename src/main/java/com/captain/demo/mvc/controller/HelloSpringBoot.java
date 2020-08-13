@@ -24,4 +24,6 @@ public class HelloSpringBoot {
     public String sayHello() {
         return userRepository.findUserByUserName("天空").getPassWord();
     }
+
+
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.captain.demo.fmouse.mapper.PromoterActivityAttendanceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.captain.demo.fmouse.entity.PromoterActivityAttendance">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="product_id" property="productId" />
+        <result column="activity_id" property="activityId" />
+        <result column="morning_start_time" property="morningStartTime" />
+        <result column="morning_start_province" property="morningStartProvince" />
+        <result column="morning_start_city" property="morningStartCity" />
+        <result column="morning_start_area" property="morningStartArea" />
+        <result column="morning_start_address" property="morningStartAddress" />
+        <result column="morning_start_longitude" property="morningStartLongitude" />
+        <result column="morning_start_latitude" property="morningStartLatitude" />
+        <result column="morning_start_photo" property="morningStartPhoto" />
+        <result column="morning_start_done" property="morningStartDone" />
+        <result column="morning_end_time" property="morningEndTime" />
+        <result column="morning_end_province" property="morningEndProvince" />
+        <result column="morning_end_city" property="morningEndCity" />
+        <result column="morning_end_area" property="morningEndArea" />
+        <result column="morning_end_address" property="morningEndAddress" />
+        <result column="morning_end_longitude" property="morningEndLongitude" />
+        <result column="morning_end_latitude" property="morningEndLatitude" />
+        <result column="morning_end_photo" property="morningEndPhoto" />
+        <result column="morning_end_done" property="morningEndDone" />
+        <result column="afternoon_start_time" property="afternoonStartTime" />
+        <result column="afternoon_start_province" property="afternoonStartProvince" />
+        <result column="afternoon_start_city" property="afternoonStartCity" />
+        <result column="afternoon_start_area" property="afternoonStartArea" />
+        <result column="afternoon_start_address" property="afternoonStartAddress" />
+        <result column="afternoon_start_longitude" property="afternoonStartLongitude" />
+        <result column="afternoon_start_latitude" property="afternoonStartLatitude" />
+        <result column="afternoon_start_photo" property="afternoonStartPhoto" />
+        <result column="afternoon_start_done" property="afternoonStartDone" />
+        <result column="afternoon_end_time" property="afternoonEndTime" />
+        <result column="afternoon_end_province" property="afternoonEndProvince" />
+        <result column="afternoon_end_city" property="afternoonEndCity" />
+        <result column="afternoon_end_area" property="afternoonEndArea" />
+        <result column="afternoon_end_address" property="afternoonEndAddress" />
+        <result column="afternoon_end_longitude" property="afternoonEndLongitude" />
+        <result column="afternoon_end_latitude" property="afternoonEndLatitude" />
+        <result column="afternoon_end_photo" property="afternoonEndPhoto" />
+        <result column="afternoon_end_done" property="afternoonEndDone" />
+        <result column="status" property="status" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, product_id, activity_id, morning_start_time, morning_start_province, morning_start_city, morning_start_area, morning_start_address, morning_start_longitude, morning_start_latitude, morning_start_photo, morning_start_done, morning_end_time, morning_end_province, morning_end_city, morning_end_area, morning_end_address, morning_end_longitude, morning_end_latitude, morning_end_photo, morning_end_done, afternoon_start_time, afternoon_start_province, afternoon_start_city, afternoon_start_area, afternoon_start_address, afternoon_start_longitude, afternoon_start_latitude, afternoon_start_photo, afternoon_start_done, afternoon_end_time, afternoon_end_province, afternoon_end_city, afternoon_end_area, afternoon_end_address, afternoon_end_longitude, afternoon_end_latitude, afternoon_end_photo, afternoon_end_done, status, is_deleted, create_time, update_time, create_by, update_by
+    </sql>
+
+</mapper>
