@@ -19,16 +19,16 @@ import java.util.HashMap;
 @Configuration
 public class MybatisConfig {
 
-//    @Bean
-//    public PaginationInterceptor paginationInterceptor() {
-//        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
 //        DynamicTableNameParser dynamicTableNameParser = new DynamicTableNameParser();
 //        dynamicTableNameParser.setTableNameHandlerMap(new HashMap<String, ITableNameHandler>() {{
 //            put("d_fmouse_plan", (metaObject, sql, tableName) -> tableName + "_" + "111");
 //        }});
 //        paginationInterceptor.setSqlParserList(Collections.singletonList(dynamicTableNameParser));
-//        return paginationInterceptor;
-//    }
+        return paginationInterceptor;
+    }
 
     private Object getParamValue(String title, MetaObject metaObject) {
         //获取参数

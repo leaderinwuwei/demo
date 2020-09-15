@@ -63,7 +63,7 @@ public class MarketArea implements Serializable {
 
     @ApiModelProperty(value = "部门类型 0:其他 1:服务处 2:大区 3:事业部 4:本部 5:组")
     @TableField("market_type")
-    private Boolean marketType;
+    private Integer marketType;
 
     @ApiModelProperty(value = "状态 1 启用 0 禁用")
     @TableField("status")

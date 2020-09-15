@@ -1,6 +1,6 @@
 package com.captain.demo.common.config;
 
-import com.captain.demo.quartz.InvokingJobDetailFactory;
+import com.captain.demo.study.quartz.InvokingJobDetailFactory;
 import com.zaxxer.hikari.HikariDataSource;
 import org.quartz.Job;
 import org.quartz.JobDetail;
