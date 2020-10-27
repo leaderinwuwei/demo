@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  * @author Captain Wang
- * @time2020/9/1
+ * @time 2020/9/1
  */
 public class Test {
 
