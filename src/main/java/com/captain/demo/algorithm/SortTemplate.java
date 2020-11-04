@@ -1,6 +1,7 @@
 package com.captain.demo.algorithm;
 
 import java.lang.reflect.Array;
+import java.util.Random;
 
 /**
  * @author Captain Wang
@@ -9,7 +10,7 @@ import java.lang.reflect.Array;
 public class SortTemplate<T extends Comparable<? super T>> {
 
     //归并排序辅助数组
-    private T[] newComparables;
+    private T[] newMergeComparables;
 
     public void selectSort(T[] comparables) {
         for (int i = 0; i < comparables.length; i++) {
@@ -19,6 +20,7 @@ public class SortTemplate<T extends Comparable<? super T>> {
                 }
             }
         }
+        System.out.println(isSorted(comparables));
     }
 
     public void insertSort(T[] comparables) {
@@ -28,6 +30,7 @@ public class SortTemplate<T extends Comparable<? super T>> {
                 this.exchange(comparables, j, j - 1);
             }
         }
+        System.out.println(isSorted(comparables));
     }
 
     public void shellSort(T[] comparables) {
@@ -43,23 +46,26 @@ public class SortTemplate<T extends Comparable<? super T>> {
             }
             h = h / 3;
         }
+        System.out.println(isSorted(comparables));
     }
 
     @SuppressWarnings("unchecked")
     public void mergeDownSort(T[] comparables) {
-        newComparables = (T[]) Array.newInstance(Comparable.class, comparables.length);
+        newMergeComparables = (T[]) Array.newInstance(Comparable.class, comparables.length);
         mergeDownSortLimit(comparables, 0, comparables.length - 1);
+        System.out.println(isSorted(comparables));
     }
 
     @SuppressWarnings("unchecked")
     public void mergeUpSort(T[] comparables) {
         int length = comparables.length;
-        newComparables = (T[]) Array.newInstance(Comparable.class, length);
+        newMergeComparables = (T[]) Array.newInstance(Comparable.class, length);
         for (int size = 1; size < length; size = size + size) {
             for (int start = 0; start < length - size; start += size + size) {
                 merge(comparables, start, start + size - 1, Math.min(start + size + size - 1, length - 1));
             }
         }
+        System.out.println(isSorted(comparables));
     }
 
     private void mergeDownSortLimit(T[] comparables, int left, int right) {
@@ -76,21 +82,49 @@ public class SortTemplate<T extends Comparable<? super T>> {
         int i = left;
         int j = middle + 1;
         if (right + 1 - left >= 0) {
-            System.arraycopy(comparables, left, newComparables, left, right + 1 - left);
+            System.arraycopy(comparables, left, newMergeComparables, left, right + 1 - left);
         }
         for (int k = left; k <= right; k++) {
             if (i > middle) {
-                comparables[k] = newComparables[j++];
+                comparables[k] = newMergeComparables[j++];
             } else if (j > right) {
-                comparables[k] = newComparables[i++];
-            } else if (newComparables[j].compareTo(newComparables[i]) < 0) {
-                comparables[k] = newComparables[j++];
+                comparables[k] = newMergeComparables[i++];
+            } else if (newMergeComparables[j].compareTo(newMergeComparables[i]) < 0) {
+                comparables[k] = newMergeComparables[j++];
             } else {
-                comparables[k] = newComparables[i++];
+                comparables[k] = newMergeComparables[i++];
             }
         }
     }
 
+    public void quickSort(T[] comparables) {
+        quickSort(comparables,0,comparables.length-1);
+        System.out.println(isSorted(comparables));
+    }
+
+    private void quickSort(T[] comparables,int left,int right){
+        if (right > left) {
+            int pivotIndex = partition(comparables,left,right);
+            quickSort(comparables,left,pivotIndex-1);
+            quickSort(comparables,pivotIndex+1,right);
+        }
+    }
+
+    private int partition(T[] comparables,int left,int right) {
+        T pivotValue = comparables[left];
+        while (left <right) {
+            while (left < right && comparables[right].compareTo(pivotValue) >= 0) {
+                right--;
+            }
+            comparables[left] = comparables[right];
+            while (left < right && comparables[left].compareTo(pivotValue) <= 0) {
+                 left++;
+            }
+            comparables[right] = comparables[left];
+         }
+        comparables[left] = pivotValue;
+        return left;
+    }
 
     private void exchange(T[] comparables, int i, int j) {
         T comparable = comparables[i];
@@ -100,8 +134,17 @@ public class SortTemplate<T extends Comparable<? super T>> {
 
     private void show(T[] comparables) {
         for (T comparable : comparables) {
-            System.out.print(comparable + " ");
+            System.out.print(comparable + "\n");
         }
+    }
+
+    private boolean isSorted(T[] comparables) {
+        for (int i = 1 ; i < comparables.length ; i++) {
+            if (comparables[i].compareTo(comparables[i -1]) < 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

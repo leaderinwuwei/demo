@@ -31,5 +31,6 @@ public class Test {
         select("shellSort");
         select("mergeDownSort");
         select("mergeUpSort");
+        select("quickSort");
     }
 }
