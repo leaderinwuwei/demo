@@ -4,16 +4,16 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.captain.demo.database.mybatis.entity.TestSelectTable">
-        <id column="id" property="id" />
-        <result column="col1" property="col1" />
-        <result column="col2" property="col2" />
-        <result column="col3" property="col3" />
-        <result column="col4" property="col4" />
-        <result column="col5" property="col5" />
-        <result column="col6" property="col6" />
-        <result column="col7" property="col7" />
-        <result column="col8" property="col8" />
-        <result column="col9" property="col9" />
+        <id column="id" property="id"/>
+        <result column="col1" property="col1"/>
+        <result column="col2" property="col2"/>
+        <result column="col3" property="col3"/>
+        <result column="col4" property="col4"/>
+        <result column="col5" property="col5"/>
+        <result column="col6" property="col6"/>
+        <result column="col7" property="col7"/>
+        <result column="col8" property="col8"/>
+        <result column="col9" property="col9"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

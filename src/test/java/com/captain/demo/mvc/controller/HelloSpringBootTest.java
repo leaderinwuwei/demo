@@ -70,7 +70,7 @@ public class HelloSpringBootTest {
         List<MarketArea> marketAreas1 = marketAreaMapper.selectList(new QueryWrapper<>());
         marketAreas1.stream().filter(v -> StringUtils.isNotBlank(v.getMarketCode())).filter(v -> "0001".startsWith(v.getMarketCode())).collect(Collectors.toList());
         LocalDateTime end1 = LocalDateTime.now();
-        System.out.println("直接从mysql数据库拿取"+Duration.between(start1, end1).toMillis());
+        System.out.println("直接从mysql数据库拿取" + Duration.between(start1, end1).toMillis());
         List<MarketArea> marketAreas = marketAreaService.list(new QueryWrapper<MarketArea>().select("market_no", "parent_market_no", "market_type"));
         List<String> departments = new ArrayList<>();
         departments.add("11758");
@@ -123,6 +123,7 @@ public class HelloSpringBootTest {
 //        LocalDateTime end2 = LocalDateTime.now();
 //        System.out.println("直接从数据库筛选（拆分字段，没有使用递归）"+Duration.between(start2, end2).toMillis());
     }
+
     private void getSelfMarketAreas(List<MarketArea> selfMarketAreaList, Map<String, MarketArea> marketAreaMap, String marketAreaNo) {
         MarketArea marketArea = marketAreaMap.get(marketAreaNo);
         selfMarketAreaList.add(marketArea);
@@ -137,25 +138,27 @@ public class HelloSpringBootTest {
 
     @Test
     public void lalala() {
-        IPage<MarketArea> page = new Page<>(1,3);
+        IPage<MarketArea> page = new Page<>(1, 3);
         IPage<MarketArea> iPage = marketAreaMapper.lalala(page);
         //marketAreaMapper.selectPage(page,new QueryWrapper<>());
         System.out.println("");
     }
+
     @Autowired
     private DataSourceTransactionManager dstManager;
+
     @Test
     public void dsaf() {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW); // 事物隔离级别，开启新事务，这样会比较安全些。
-        TransactionStatus transaction= dstManager.getTransaction(def); // 获得事务状态
+        TransactionStatus transaction = dstManager.getTransaction(def); // 获得事务状态
         try {
             MarketArea marketArea1 = marketAreaMapper.selectById(1);
             marketArea1.setMarketNo("11111111111111111");
             MarketArea marketArea2 = marketAreaMapper.selectById(1);
             dstManager.commit(transaction);
-        }catch (Exception e) {
-          dstManager.rollback(transaction);
+        } catch (Exception e) {
+            dstManager.rollback(transaction);
         }
 
     }
@@ -163,7 +166,7 @@ public class HelloSpringBootTest {
     @Test
     public void timeToGetMaketCode2() {
         List<Object> marketAreas1 = new ArrayList<>(marketAreaMapper.selectList(new QueryWrapper<>()));
-        redisUtil.lSetList("AREA_MARKET_CODES",marketAreas1);
+        redisUtil.lSetList("AREA_MARKET_CODES", marketAreas1);
     }
 
     @Test
@@ -174,22 +177,22 @@ public class HelloSpringBootTest {
                 int a = v.getMarketCode().length();
                 for (int i = 0; i < a / 4; i++) {
                     if (0 == i) {
-                        v.setA(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setA(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                     if (1 == i) {
-                        v.setB(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setB(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                     if (2 == i) {
-                        v.setC(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setC(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                     if (3 == i) {
-                        v.setD(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setD(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                     if (4 == i) {
-                        v.setE(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setE(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                     if (5 == i) {
-                        v.setF(v.getMarketCode().substring(i*4,(i+1)*4));
+                        v.setF(v.getMarketCode().substring(i * 4, (i + 1) * 4));
                     }
                 }
                 marketAreaMapper.updateById(v);

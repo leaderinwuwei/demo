@@ -51,7 +51,7 @@ public class UserController {
         }
         String openid = bodyJson.getString("openid");
 
-        User user = userService.getOne(new QueryWrapper<User>().eq("openid",openid).last("limit 1"));
+        User user = userService.getOne(new QueryWrapper<User>().eq("openid", openid).last("limit 1"));
         if (user == null) {
             user = new User();
             user.setOpenid(openid);

@@ -39,7 +39,7 @@ public class SpringContextUtil implements ApplicationContextAware {
         return getApplicationContext().getBean(name, clazz);
     }
 
-    public static List<String> listBeans(){
+    public static List<String> listBeans() {
         return Arrays.asList(getApplicationContext().getBeanDefinitionNames());
     }
 

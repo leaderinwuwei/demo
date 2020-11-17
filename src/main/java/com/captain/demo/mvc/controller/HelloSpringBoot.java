@@ -20,6 +20,7 @@ public class HelloSpringBoot {
     private int afsdgh;
     @Resource
     private UserRepository userRepository;
+
     @GetMapping("/sayHello")
     public String sayHello() {
         return userRepository.findUserByUserName("天空").getPassWord();

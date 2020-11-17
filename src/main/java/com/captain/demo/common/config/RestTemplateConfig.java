@@ -35,106 +35,106 @@ import java.util.List;
 @Slf4j
 @Configuration
 public class RestTemplateConfig {
-	//Determines the timeout in milliseconds until a  connection is established.
-	private static final int CONNECT_TIMEOUT = 30000;
+    //Determines the timeout in milliseconds until a  connection is established.
+    private static final int CONNECT_TIMEOUT = 30000;
 
-	//The  timeout when requesting a connection from the connection manager.
-	private static final int REQUEST_TIMEOUT = 30000;
+    //The  timeout when requesting a connection from the connection manager.
+    private static final int REQUEST_TIMEOUT = 30000;
 
-	//The timeout for waiting for data
-	private static final int SOCKET_TIMEOUT = 60000;
+    //The timeout for waiting for data
+    private static final int SOCKET_TIMEOUT = 60000;
 
-	private static final int MAX_TOTAL_CONNECTIONS = 50;
-	private static final int DEFAULT_KEEP_ALIVE_TIME_MIlLIS = 20 * 1000;
-	private static final int CLOSE_IDLE_CONNECTION_WAIT_TIME_SECS = 30;
+    private static final int MAX_TOTAL_CONNECTIONS = 50;
+    private static final int DEFAULT_KEEP_ALIVE_TIME_MIlLIS = 20 * 1000;
+    private static final int CLOSE_IDLE_CONNECTION_WAIT_TIME_SECS = 30;
 
-	@Bean
-	public RestTemplate restTemplate () {
+    @Bean
+    public RestTemplate restTemplate() {
 
-		RestTemplate restTemplate = new RestTemplate(clientHttpRequestfactory());
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestfactory());
 
-		/**
-		 * StringHttpMessogeConverter 默认使用 IS0-8859-编码，此处修改为 UTF-8
-		 */
-		List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
-		Iterator<HttpMessageConverter<?>> iterator = messageConverters.iterator();
-		while (iterator.hasNext()) {
-			HttpMessageConverter<?> converter = iterator.next();
-			if (converter instanceof StringHttpMessageConverter) {
-				((StringHttpMessageConverter) converter).setDefaultCharset(Charset.forName("UTF-8"));
-			}
-		}
-		return restTemplate;
-	}
+        /**
+         * StringHttpMessogeConverter 默认使用 IS0-8859-编码，此处修改为 UTF-8
+         */
+        List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+        Iterator<HttpMessageConverter<?>> iterator = messageConverters.iterator();
+        while (iterator.hasNext()) {
+            HttpMessageConverter<?> converter = iterator.next();
+            if (converter instanceof StringHttpMessageConverter) {
+                ((StringHttpMessageConverter) converter).setDefaultCharset(Charset.forName("UTF-8"));
+            }
+        }
+        return restTemplate;
+    }
 
-	@Bean
-	public HttpComponentsClientHttpRequestFactory clientHttpRequestfactory () {
-		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory =  new HttpComponentsClientHttpRequestFactory();
-		clientHttpRequestFactory.setHttpClient(httpClient());
-		return clientHttpRequestFactory;
-	}
+    @Bean
+    public HttpComponentsClientHttpRequestFactory clientHttpRequestfactory() {
+        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setHttpClient(httpClient());
+        return clientHttpRequestFactory;
+    }
 
-	@Bean
-	public PoolingHttpClientConnectionManager poolingConnectionManager() {
+    @Bean
+    public PoolingHttpClientConnectionManager poolingConnectionManager() {
 
-		SSLContextBuilder builder = new SSLContextBuilder();
-		try {
-			builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
-		}catch (NoSuchAlgorithmException | KeyStoreException e) {
-			log.error ("Pooling Connection Manager Initialisation failure because of"+ e.getMessage(), e);
-		}
-		SSLConnectionSocketFactory sslsf = null;
-		try{
-			sslsf = new SSLConnectionSocketFactory (builder.build());
-		} catch (KeyManagementException | NoSuchAlgorithmException e) {
-			log.error("Pooling Connection Manager Initialisation failure because of" + e.getMessage(), e);
-		}
-		Registry socketFactoryRegistry = RegistryBuilder.create().register("https",sslsf).register("http",new PlainConnectionSocketFactory()).build();
+        SSLContextBuilder builder = new SSLContextBuilder();
+        try {
+            builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+        } catch (NoSuchAlgorithmException | KeyStoreException e) {
+            log.error("Pooling Connection Manager Initialisation failure because of" + e.getMessage(), e);
+        }
+        SSLConnectionSocketFactory sslsf = null;
+        try {
+            sslsf = new SSLConnectionSocketFactory(builder.build());
+        } catch (KeyManagementException | NoSuchAlgorithmException e) {
+            log.error("Pooling Connection Manager Initialisation failure because of" + e.getMessage(), e);
+        }
+        Registry socketFactoryRegistry = RegistryBuilder.create().register("https", sslsf).register("http", new PlainConnectionSocketFactory()).build();
 //        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
 //                .create ().register ("https", sslsf)
 //                .register ( "http", new PlainConnectionSocketFactory())
 //                .build ();
 
-		PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager  (socketFactoryRegistry);
-		poolingConnectionManager.setMaxTotal(MAX_TOTAL_CONNECTIONS);
-		return poolingConnectionManager;
-	}
+        PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        poolingConnectionManager.setMaxTotal(MAX_TOTAL_CONNECTIONS);
+        return poolingConnectionManager;
+    }
 
-	@Bean
-	public ConnectionKeepAliveStrategy connectionKeepAliveStrategy () {
-		return new ConnectionKeepAliveStrategy (){
+    @Bean
+    public ConnectionKeepAliveStrategy connectionKeepAliveStrategy() {
+        return new ConnectionKeepAliveStrategy() {
 
-			@Override
-			public long getKeepAliveDuration(HttpResponse response, HttpContext context) {
-				HeaderElementIterator it = new BasicHeaderElementIterator
-						(response.headerIterator(HTTP.CONN_KEEP_ALIVE));
-				while (it.hasNext()) {
-					HeaderElement he = it.nextElement();
-					String param = he.getName();
-					String value = he.getValue();
-					if (value != null && param.equalsIgnoreCase("timeout")) {
-						return Long.parseLong(value) * 1000;
-					}
-				}
-				return DEFAULT_KEEP_ALIVE_TIME_MIlLIS;
-			}
-
-
-		};
-	}
+            @Override
+            public long getKeepAliveDuration(HttpResponse response, HttpContext context) {
+                HeaderElementIterator it = new BasicHeaderElementIterator
+                        (response.headerIterator(HTTP.CONN_KEEP_ALIVE));
+                while (it.hasNext()) {
+                    HeaderElement he = it.nextElement();
+                    String param = he.getName();
+                    String value = he.getValue();
+                    if (value != null && param.equalsIgnoreCase("timeout")) {
+                        return Long.parseLong(value) * 1000;
+                    }
+                }
+                return DEFAULT_KEEP_ALIVE_TIME_MIlLIS;
+            }
 
 
-	@Bean
-	public CloseableHttpClient httpClient() {
-		RequestConfig requestConfig = RequestConfig.custom ()
-				.setConnectionRequestTimeout(REQUEST_TIMEOUT)
-				.setConnectTimeout (CONNECT_TIMEOUT)
-				.setSocketTimeout (SOCKET_TIMEOUT).build();
+        };
+    }
 
-		return HttpClients.custom ()
-				.setDefaultRequestConfig(requestConfig)
-				.setConnectionManager (poolingConnectionManager ())
-				.setKeepAliveStrategy (connectionKeepAliveStrategy ())
-				.build ();
-	}
+
+    @Bean
+    public CloseableHttpClient httpClient() {
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectionRequestTimeout(REQUEST_TIMEOUT)
+                .setConnectTimeout(CONNECT_TIMEOUT)
+                .setSocketTimeout(SOCKET_TIMEOUT).build();
+
+        return HttpClients.custom()
+                .setDefaultRequestConfig(requestConfig)
+                .setConnectionManager(poolingConnectionManager())
+                .setKeepAliveStrategy(connectionKeepAliveStrategy())
+                .build();
+    }
 }

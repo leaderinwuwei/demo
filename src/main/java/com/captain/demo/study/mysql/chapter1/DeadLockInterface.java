@@ -9,5 +9,6 @@ import java.sql.SQLException;
  */
 public interface DeadLockInterface {
     void insert(Connection connection) throws SQLException;
+
     void select(Connection connection) throws SQLException;
 }

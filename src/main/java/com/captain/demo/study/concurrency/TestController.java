@@ -15,7 +15,7 @@ public class TestController {
     @GetMapping("/synchronized")
     public synchronized Result synchronizedss() throws InterruptedException {
         Thread.sleep(9000L);
-        System.out.printf("999999999999"+Thread.currentThread().getName()+"\n");
+        System.out.printf("999999999999" + Thread.currentThread().getName() + "\n");
         return new Result();
     }
 

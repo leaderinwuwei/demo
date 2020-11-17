@@ -173,8 +173,9 @@ public class QuartzConfig {
 
     /**
      * 加载触发器
-     *
+     * <p>
      * 新建触发器进行job 的调度  例如 executeJobDetail
+     *
      * @param jobDetail
      * @return
      */
@@ -187,9 +188,8 @@ public class QuartzConfig {
 
     /**
      * 加载job
-     *
+     * <p>
      * 新建job 类用来代理
-     *
      *
      * @return
      */
@@ -201,8 +201,9 @@ public class QuartzConfig {
 
     /**
      * 执行规则job工厂
-     *
+     * <p>
      * 配置job 类中需要定时执行的 方法  execute
+     *
      * @param jobClass
      * @param groupName
      * @param targetObject

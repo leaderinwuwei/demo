@@ -9,7 +9,7 @@ public class GCTest {
 
     private static final int ONE_MB = 1024 * 1024;
 
-    private byte[] bigSize = new byte[2*ONE_MB];
+    private byte[] bigSize = new byte[2 * ONE_MB];
 
     public static void main(String[] args) {
         GCTest gcTest1 = new GCTest();
@@ -30,11 +30,11 @@ public class GCTest {
 //                }
 //            }.start();
 //        }catch (Exception e) {
-            gcTest2.bigSize = null;
-            gcTest1.bigSize = null;
+        gcTest2.bigSize = null;
+        gcTest1.bigSize = null;
 //            list.clear();
 //        }
-        while (true){
+        while (true) {
 
         }
     }

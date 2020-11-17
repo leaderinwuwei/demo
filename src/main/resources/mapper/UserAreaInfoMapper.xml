@@ -4,18 +4,18 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.captain.demo.database.mybatis.entity.UserAreaInfo">
-        <id column="user_area_id" property="userAreaId" />
-        <result column="user_id" property="userId" />
-        <result column="qywechat_id" property="qywechatId" />
-        <result column="xcx_appid" property="xcxAppid" />
-        <result column="market_area_id" property="marketAreaId" />
-        <result column="market_company_id" property="marketCompanyId" />
-        <result column="market_second_id" property="marketSecondId" />
-        <result column="market_third_id" property="marketThirdId" />
-        <result column="market_fourth_id" property="marketFourthId" />
-        <result column="market_fifth_id" property="marketFifthId" />
-        <result column="market_sixth_id" property="marketSixthId" />
-        <result column="is_active" property="isActive" />
+        <id column="user_area_id" property="userAreaId"/>
+        <result column="user_id" property="userId"/>
+        <result column="qywechat_id" property="qywechatId"/>
+        <result column="xcx_appid" property="xcxAppid"/>
+        <result column="market_area_id" property="marketAreaId"/>
+        <result column="market_company_id" property="marketCompanyId"/>
+        <result column="market_second_id" property="marketSecondId"/>
+        <result column="market_third_id" property="marketThirdId"/>
+        <result column="market_fourth_id" property="marketFourthId"/>
+        <result column="market_fifth_id" property="marketFifthId"/>
+        <result column="market_sixth_id" property="marketSixthId"/>
+        <result column="is_active" property="isActive"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

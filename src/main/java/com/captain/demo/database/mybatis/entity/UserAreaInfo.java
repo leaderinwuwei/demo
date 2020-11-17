@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,10 +25,10 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("t_user_area_info")
-@ApiModel(value="UserAreaInfo对象", description="用户绑定的区域表（企业微信用户，如业务员）")
+@ApiModel(value = "UserAreaInfo对象", description = "用户绑定的区域表（企业微信用户，如业务员）")
 public class UserAreaInfo implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "自增主键")
     @TableId(value = "user_area_id", type = IdType.AUTO)

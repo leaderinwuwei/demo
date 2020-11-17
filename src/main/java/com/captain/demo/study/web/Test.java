@@ -5,14 +5,15 @@ import java.util.Scanner;
 
 /**
  * @author Captain Wang
- * @time2020/8/19
+ * @time 2020/8/19
  */
 public class Test {
-     static void check(int a) {
+    static void check(int a) {
         if (7 == a / 10 % 10 && a % 10 % 2 == 1) {
-            System.out.println("就是你了"+a);
+            System.out.println("就是你了" + a);
         }
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int mRow = scanner.nextInt();
@@ -26,7 +27,7 @@ public class Test {
             int up = 0;
             int sm = 0;
             int sn = 0;
-            int downFlag = nLine / 2 ;
+            int downFlag = nLine / 2;
             for (int i = 0; i < mRow * nLine; i++) {
 
                 //向右转向
@@ -36,7 +37,6 @@ public class Test {
                     left = 0;
                     up = 0;
                     sm = sm + 1;
-                    sn = sn;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
                     continue;
@@ -44,7 +44,6 @@ public class Test {
                 //向右
                 if (sm < mRow - 1 - already && right == 1) {
                     sm = sm + 1;
-                    sn = sn;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
                     continue;
@@ -55,7 +54,6 @@ public class Test {
                     down = 1;
                     left = 0;
                     up = 0;
-                    sm = sm;
                     sn = sn + 1;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
@@ -63,7 +61,6 @@ public class Test {
                 }
                 //向下
                 if (sm == mRow - 1 - already && sn < nLine - 1 - already && down == 1) {
-                    sm = sm;
                     sn = sn + 1;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
@@ -71,12 +68,10 @@ public class Test {
                 }
                 //向左转向
                 if (sm == mRow - 1 - already && sn == nLine - 1 - already && down == 1) {
-                    right = 0;
                     down = 0;
                     left = 1;
                     up = 0;
                     sm = sm - 1;
-                    sn = sn;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
                     continue;
@@ -84,18 +79,14 @@ public class Test {
                 //向左
                 if (sm > already && sn == nLine - 1 - already && left == 1) {
                     sm = sm - 1;
-                    sn = sn;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
                     continue;
                 }
                 //向上转向
                 if (sm == already && sn == nLine - 1 - already && left == 1) {
-                    right = 0;
-                    down = 0;
                     left = 0;
                     up = 1;
-                    sm = sm;
                     sn = sn - 1;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
@@ -103,18 +94,16 @@ public class Test {
                 }
                 //向上
                 if (sm == already && sn < nLine - 1 - already && up == 1) {
-                    sm = sm;
                     sn = sn - 1;
                     a[sm][sn] = i + 1;
                     check(a[sm][sn]);
-                    continue;
                 }
 
 
             }
         } else {
             int[][] b = {};
-            System.out.printf(Arrays.toString(b));
+            System.out.print(Arrays.toString(b));
         }
 
     }

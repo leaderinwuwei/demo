@@ -87,6 +87,7 @@ public class HttpClientUtil {
     public static String httpGet(URI uri, Map<String, String> paramMap, Integer timeOut) throws Exception {
         return httpGet(uri.toString(), paramMap, timeOut);
     }
+
     public static String httpGet(String uri, Map<String, String> paramMap) throws Exception {
         return httpGet(uri, paramMap, null);
     }

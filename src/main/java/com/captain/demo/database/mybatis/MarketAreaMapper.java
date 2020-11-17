@@ -16,5 +16,5 @@ import java.util.List;
  * @since 2020-08-11
  */
 public interface MarketAreaMapper extends BaseMapper<MarketArea> {
-IPage<MarketArea> lalala(IPage page);
+    IPage<MarketArea> lalala(IPage page);
 }

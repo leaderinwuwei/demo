@@ -4,18 +4,18 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.captain.demo.database.mybatis.entity.MarketArea">
-        <id column="id" property="id" />
-        <result column="market_no" property="marketNo" />
-        <result column="name" property="name" />
-        <result column="parent_market_no" property="parentMarketNo" />
-        <result column="qywechat_id" property="qywechatId" />
-        <result column="market_code" property="marketCode" />
-        <result column="sort" property="sort" />
-        <result column="sfa_market_id" property="sfaMarketId" />
-        <result column="market_type" property="marketType" />
-        <result column="status" property="status" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
+        <id column="id" property="id"/>
+        <result column="market_no" property="marketNo"/>
+        <result column="name" property="name"/>
+        <result column="parent_market_no" property="parentMarketNo"/>
+        <result column="qywechat_id" property="qywechatId"/>
+        <result column="market_code" property="marketCode"/>
+        <result column="sort" property="sort"/>
+        <result column="sfa_market_id" property="sfaMarketId"/>
+        <result column="market_type" property="marketType"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

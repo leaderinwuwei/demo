@@ -26,7 +26,7 @@ public class ResponseUtil {
      * 根据消息码等生成接口返回对象
      *
      * @param enumResultCode 结果返回码
-     * @param data 数据对象
+     * @param data           数据对象
      * @param <T>
      * @return
      */
@@ -106,6 +106,7 @@ public class ResponseUtil {
     /**
      * 封装
      * 请求接口时，传入参数有误的异常处理
+     *
      * @param <T>
      * @return
      */

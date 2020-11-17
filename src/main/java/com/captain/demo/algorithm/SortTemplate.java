@@ -98,30 +98,30 @@ public class SortTemplate<T extends Comparable<? super T>> {
     }
 
     public void quickSort(T[] comparables) {
-        quickSort(comparables,0,comparables.length-1);
+        quickSort(comparables, 0, comparables.length - 1);
         System.out.println(isSorted(comparables));
     }
 
-    private void quickSort(T[] comparables,int left,int right){
+    private void quickSort(T[] comparables, int left, int right) {
         if (right > left) {
-            int pivotIndex = partition(comparables,left,right);
-            quickSort(comparables,left,pivotIndex-1);
-            quickSort(comparables,pivotIndex+1,right);
+            int pivotIndex = partition(comparables, left, right);
+            quickSort(comparables, left, pivotIndex - 1);
+            quickSort(comparables, pivotIndex + 1, right);
         }
     }
 
-    private int partition(T[] comparables,int left,int right) {
+    private int partition(T[] comparables, int left, int right) {
         T pivotValue = comparables[left];
-        while (left <right) {
+        while (left < right) {
             while (left < right && comparables[right].compareTo(pivotValue) >= 0) {
                 right--;
             }
             comparables[left] = comparables[right];
             while (left < right && comparables[left].compareTo(pivotValue) <= 0) {
-                 left++;
+                left++;
             }
             comparables[right] = comparables[left];
-         }
+        }
         comparables[left] = pivotValue;
         return left;
     }
@@ -139,8 +139,8 @@ public class SortTemplate<T extends Comparable<? super T>> {
     }
 
     private boolean isSorted(T[] comparables) {
-        for (int i = 1 ; i < comparables.length ; i++) {
-            if (comparables[i].compareTo(comparables[i -1]) < 0) {
+        for (int i = 1; i < comparables.length; i++) {
+            if (comparables[i].compareTo(comparables[i - 1]) < 0) {
                 return false;
             }
         }

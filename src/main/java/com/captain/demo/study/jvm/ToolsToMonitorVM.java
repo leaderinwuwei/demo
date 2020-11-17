@@ -16,7 +16,7 @@ public class ToolsToMonitorVM {
             }
             System.out.print("\n线程：" + thread.getName() + "\n");
             for (StackTraceElement element : stack) {
-                System.out.print("\t"+element+"\n");
+                System.out.print("\t" + element + "\n");
             }
         }
     }

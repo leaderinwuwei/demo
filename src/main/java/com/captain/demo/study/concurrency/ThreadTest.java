@@ -8,7 +8,7 @@ import static java.lang.System.*;
  * @author Captain Wang
  * @time2020/7/5
  */
-public class ThreadTest  {
+public class ThreadTest {
     private Thread thread;
     private Runnable runnable;
     private Callable callable;
@@ -16,6 +16,7 @@ public class ThreadTest  {
     public ThreadTest() {
 
     }
+
     public Thread getThread() {
         return thread;
     }
@@ -37,15 +38,15 @@ public class ThreadTest  {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                out.println("Hello Thread"+Thread.currentThread().getName());
+                out.println("Hello Thread" + Thread.currentThread().getName());
                 Thread.currentThread().stop();
             }
         };
 
-        runnable = () -> out.println("Hello Runnable"+Thread.currentThread().getName());
+        runnable = () -> out.println("Hello Runnable" + Thread.currentThread().getName());
 
         callable = () -> {
-            out.println("Hello Callable"+Thread.currentThread().getName());
+            out.println("Hello Callable" + Thread.currentThread().getName());
             return null;
         };
     }
